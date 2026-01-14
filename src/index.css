@@ -1,0 +1,731 @@
+/* Fuente principal - Plus Jakarta Sans (Premium, amigable) */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+/* ==========================================
+   TIMEFLOW - DARK PREMIUM (Electric Orange)
+   ========================================== */
+
+:root {
+  /* ==========================================
+     DARK PREMIUM PALETTE - Electric Orange
+     Energy + Action + Productivity
+     ========================================== */
+  
+  /* Backgrounds - Near Black Premium */
+  --color-bg: #09090B;                /* Main background */
+  --color-bg-elevated: #111113;       /* Card/elevated surfaces */
+  --color-bg-surface: #18181B;        /* Secondary sections */
+  --color-bg-glow: rgba(255, 107, 53, 0.03);
+  
+  /* Primary - Electric Orange (Action & Energy) */
+  --color-primary: #FF6B35;           /* Electric orange */
+  --color-primary-hover: #E85A2A;     /* Orange hover */
+  --color-primary-dark: #D14920;      /* Darker orange */
+  --color-primary-muted: rgba(255, 107, 53, 0.15);
+  --color-primary-glow: rgba(255, 107, 53, 0.25);
+  
+  /* Text - High Contrast on Dark */
+  --color-text: #FAFAFA;              /* Primary text - 18:1 AAA */
+  --color-text-secondary: #A1A1AA;    /* Body text - 7.5:1 AAA */
+  --color-text-muted: #71717A;        /* Muted - 4.6:1 AA */
+  --color-text-on-primary: #FFFFFF;   /* White text on orange buttons */
+  
+  /* States */
+  --color-success: #22C55E;           /* Green success */
+  --color-warning: #F59E0B;           /* Amber warning */
+  --color-error: #EF4444;             /* Red error */
+  
+  /* Shadows - Deep for Dark UI */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-cta: 0 0 40px rgba(255, 107, 53, 0.3), 0 0 80px rgba(255, 107, 53, 0.1);
+  
+  /* Borders - Subtle on Dark */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --border-primary: rgba(255, 107, 53, 0.3);
+  
+  /* Focus States - Accessibility */
+  --focus-ring: 0 0 0 2px var(--color-bg), 0 0 0 4px rgba(255, 107, 53, 0.5);
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body - Dark Premium */
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern' 1;
+  text-rendering: optimizeLegibility;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Button/Link focus states */
+button:focus-visible,
+a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 4px;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ==========================================
+   TIPOGRAFÍA APPLE STYLE
+   ========================================== */
+
+.text-display {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.text-headline {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.text-body {
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   ANIMACIONES
+   ========================================== */
+
+/* Fade in suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Stagger para elementos en secuencia */
+.animate-delay-1 { animation-delay: 0.1s; opacity: 0; }
+.animate-delay-2 { animation-delay: 0.2s; opacity: 0; }
+.animate-delay-3 { animation-delay: 0.3s; opacity: 0; }
+.animate-delay-4 { animation-delay: 0.4s; opacity: 0; }
+
+/* Pulso suave */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Olas */
+@keyframes wave {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-25px); }
+  100% { transform: translateX(0); }
+}
+
+.animate-wave {
+  animation: wave 2s ease-in-out infinite;
+}
+
+/* Burbujas */
+@keyframes bubble {
+  0% { transform: translateY(0) scale(1); opacity: 0.5; }
+  100% { transform: translateY(-40px) scale(0.5); opacity: 0; }
+}
+
+.animate-bubble {
+  animation: bubble 2s ease-out infinite;
+}
+
+.animate-bubble-slow {
+  animation: bubble 3s ease-out infinite;
+}
+
+/* Llamas */
+@keyframes flicker {
+  0%, 100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+  25% { transform: scaleY(1.02) scaleX(0.98); opacity: 0.95; }
+  50% { transform: scaleY(0.98) scaleX(1.02); opacity: 1; }
+  75% { transform: scaleY(1.01) scaleX(0.99); opacity: 0.97; }
+}
+
+.animate-flicker {
+  animation: flicker 0.5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-flicker-fast {
+  animation: flicker 0.3s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* Chispas */
+@keyframes spark {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-30px) translateX(10px) scale(0); opacity: 0; }
+}
+
+.animate-spark {
+  animation: spark 1s ease-out infinite;
+}
+
+.animate-spark-slow {
+  animation: spark 1.5s ease-out infinite;
+}
+
+/* Estrellas */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.animate-twinkle {
+  animation: twinkle 1.5s ease-in-out infinite;
+}
+
+.animate-twinkle-slow {
+  animation: twinkle 2.5s ease-in-out infinite;
+}
+
+/* ==========================================
+   ANIMATED BACKGROUND - FLOATING GRADIENTS
+   ========================================== */
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+  75% {
+    transform: translate(-30px, -10px) scale(1.02);
+  }
+}
+
+@keyframes float-medium {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-40px, 30px) scale(1.08);
+  }
+  66% {
+    transform: translate(30px, -20px) scale(0.92);
+  }
+}
+
+@keyframes float-fast {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(50px, 30px) scale(1.1);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(20px, -40px) scale(0.95);
+  }
+  66% {
+    transform: translate(-30px, 20px) scale(1.05);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 20s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-medium 15s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-fast 12s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 18s ease-in-out infinite;
+}
+
+/* Breathing animation - Calm style */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.8;
+  }
+}
+
+.animate-breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/* Slow pulse for sun/orb */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+/* ==========================================
+   DARK PREMIUM ANIMATIONS
+   ========================================== */
+
+/* Glow pulse for hero orb */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 40px rgba(255, 107, 53, 0.3), 0 0 80px rgba(255, 107, 53, 0.15);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 60px rgba(255, 107, 53, 0.4), 0 0 120px rgba(255, 107, 53, 0.2);
+    transform: scale(1.02);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Ring rotation */
+@keyframes ring-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-ring-rotate {
+  animation: ring-rotate 20s linear infinite;
+}
+
+/* Gradient shift for backgrounds */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Subtle float for cards */
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ==========================================
+   REDUCED MOTION PREFERENCES
+   ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-fade-in,
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-float-fast,
+  .animate-float-reverse,
+  .animate-glow-pulse,
+  .animate-ring-rotate,
+  .animate-breathe,
+  .animate-pulse-slow,
+  .animate-bounce {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ==========================================
+   VIDEO BACKGROUND UTILITIES
+   ========================================== */
+
+.video-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.video-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ==========================================
+   FUTURISTIC-MINIMALIST UTILITIES
+   ========================================== */
+
+/* Glass morphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 107, 53, 0.15);
+}
+
+/* Subtle glow text */
+.text-glow {
+  text-shadow: 0 0 40px rgba(255, 107, 53, 0.4);
+}
+
+.text-glow-subtle {
+  text-shadow: 0 0 30px rgba(255, 107, 53, 0.2);
+}
+
+/* Animated border gradient */
+@keyframes border-glow {
+  0%, 100% {
+    border-color: rgba(255, 107, 53, 0.1);
+  }
+  50% {
+    border-color: rgba(255, 107, 53, 0.25);
+  }
+}
+
+.border-glow-animate {
+  animation: border-glow 3s ease-in-out infinite;
+}
+
+/* Shimmer effect for buttons */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Scan line effect (subtle) */
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.scan-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  animation: scan-line 8s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Number counter glow */
+.num-glow {
+  text-shadow: 
+    0 0 20px rgba(255, 107, 53, 0.5),
+    0 0 40px rgba(255, 107, 53, 0.25);
+}
+
+/* Step connector line */
+.step-connector {
+  position: relative;
+}
+
+.step-connector::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 107, 53, 0.3), transparent);
+  transform: translateY(-50%);
+}
+
+.step-connector:last-child::after {
+  display: none;
+}
+
+/* Glowing orb for step numbers */
+.step-orb {
+  position: relative;
+}
+
+.step-orb::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: rgba(255, 107, 53, 0.15);
+  filter: blur(8px);
+  z-index: -1;
+}
+
+/* Feature card hover with gradient border */
+.feature-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 53, 0) 0%,
+    rgba(255, 107, 53, 0) 100%
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.feature-card:hover::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 107, 53, 0.4) 0%,
+    rgba(255, 107, 53, 0.05) 50%,
+    rgba(255, 107, 53, 0.25) 100%
+  );
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 107, 53, 0.15);
+}
+
+/* Icon container glow on hover */
+.icon-container {
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .icon-container {
+  box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+  background: rgba(255, 107, 53, 0.25);
+}
+
+/* Smooth underline animation for links */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Stats card with subtle pulse */
+@keyframes stats-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
+  }
+  50% {
+    box-shadow: 0 0 30px 0 rgba(255, 107, 53, 0.08);
+  }
+}
+
+.stats-card {
+  animation: stats-pulse 4s ease-in-out infinite;
+}
+
+/* Floating particles (decorative) */
+@keyframes particle-float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-5px);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px);
+    opacity: 0.5;
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: particle-float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* CTA button enhanced */
+.cta-primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    transparent 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cta-primary:hover::before {
+  opacity: 1;
+}
+
+.cta-primary:hover {
+  box-shadow: 
+    0 0 50px rgba(255, 107, 53, 0.5),
+    0 0 100px rgba(255, 107, 53, 0.25);
+}
+
+/* Secondary button glass effect */
+.cta-secondary {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 107, 53, 0.3);
+  box-shadow: 0 0 30px rgba(255, 107, 53, 0.15);
+}
